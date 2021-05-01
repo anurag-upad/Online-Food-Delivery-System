@@ -1,4 +1,4 @@
-package com.anurag.restaurant;
+package com.anurag.customer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,10 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class RestaurantServiceApplication {
+public class CustomerManagementServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestaurantServiceApplication.class, args);
+		SpringApplication.run(CustomerManagementServiceApplication.class, args);
 	}
 	
 	@Bean
@@ -21,5 +21,5 @@ public class RestaurantServiceApplication {
 	    validatorFactoryBean.setValidationMessageSource(messageSource);
 	    return validatorFactoryBean;
 	}
-	
+
 }

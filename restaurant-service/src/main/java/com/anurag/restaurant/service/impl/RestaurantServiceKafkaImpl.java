@@ -6,11 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.MessagingException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.anurag.restaurant.domain.Order;
 import com.anurag.restaurant.domain.OrderStatus;
 import com.anurag.restaurant.service.RestaurantServiceKafka;
 
+@Service
+@Transactional
 public class RestaurantServiceKafkaImpl implements RestaurantServiceKafka {
 	
 	private static final Logger log = LoggerFactory.getLogger(RestaurantServiceKafkaImpl.class);

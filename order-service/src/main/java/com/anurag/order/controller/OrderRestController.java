@@ -23,7 +23,7 @@ import com.anurag.order.service.OrderService;
 import com.anurag.order.service.OrderServiceKafka;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/order")
 public class OrderRestController {
 	
 	@Autowired
@@ -42,7 +42,7 @@ public class OrderRestController {
 	private String paymentManagmentUrl;
 
 	
-	@PostMapping(value = "/order")
+	@PostMapping(value = "/create")
 	public String placeOrder(@Valid @RequestBody Order order) throws MessagingException {
 		
 		//Create the order for the customer after validating the input @Valid
@@ -67,7 +67,7 @@ public class OrderRestController {
 		return "Order has been placed successfully !!";
 	}
 
-	@GetMapping("/order/{restaurantId}")
+	@GetMapping("/{restaurantId}")
 	public List<Order> ordersByRestaurantId(@PathVariable Long restaurantId) {
 		
 		if(restaurantId == null)
@@ -85,16 +85,16 @@ public class OrderRestController {
 		return orderService.getOrdersByUserId(userId);
 	}
 
-	@GetMapping("/order/{orderId}")
+	@GetMapping("/{orderId}")
 	public Order orderByOrderId(@PathVariable Long orderId) {
 		
 		if(orderId == null)
-			throw new IllegalArgumentException("OrderId Id is invalid.");
+			throw new IllegalArgumentException("Order Id is invalid.");
 		
 		return orderService.getOrderByOrderId(orderId);
 	}
 	
-	@GetMapping("/order/restaurant/{restaurantId}")
+	@GetMapping("/restaurant/{restaurantId}")
 	public Restaurant restaurant(@PathVariable Long restaurantId) {
 		
 		//make a REST call to Restaurant Microservice through Service Discovery

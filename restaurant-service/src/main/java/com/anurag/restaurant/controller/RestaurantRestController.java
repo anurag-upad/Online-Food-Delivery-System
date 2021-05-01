@@ -17,14 +17,14 @@ import com.anurag.restaurant.domain.Restaurant;
 import com.anurag.restaurant.service.RestaurantService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/restaurant")
 public class RestaurantRestController {
 
 	@Autowired
 	private RestaurantService restaurantService;
 	
 	
-	@PostMapping("/restaurant")
+	@PostMapping("/create")
 	public Long uploadNewRestaurant(@Valid @RequestBody Restaurant restaurant) {
 		
 		//save Restaurant and its info after validating input @Valid
@@ -32,7 +32,7 @@ public class RestaurantRestController {
 		return restaurantId;
 	}
 
-	@GetMapping("/restaurant/{restaurantId}")
+	@GetMapping("/{restaurantId}")
 	public Restaurant restaurant(@PathVariable Long restaurantId) {
 		
 		if(restaurantId == null)
@@ -41,12 +41,12 @@ public class RestaurantRestController {
 		return restaurantService.getRestaurantById(restaurantId);
 	}
 	
-	@GetMapping("/restaurant/all")
+	@GetMapping("/all")
 	public List<Restaurant> restaurantsListing() {
 		return restaurantService.getAllRestaurants();
 	}
 
-	@GetMapping(value = "/restaurant/{restaurantId}/menu")
+	@GetMapping(value = "/{restaurantId}/menu")
     public List<FoodMenu> showFoodMenu(@PathVariable Long restaurantId) {
 		
 		if(restaurantId == null)

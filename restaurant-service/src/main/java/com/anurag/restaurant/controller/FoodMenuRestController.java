@@ -16,14 +16,14 @@ import com.anurag.restaurant.domain.FoodMenu;
 import com.anurag.restaurant.service.FoodMenuService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/foodMenu")
 public class FoodMenuRestController {
 	
 	@Autowired
 	private FoodMenuService foodMenuService;
 
 
-	@GetMapping("/{restaurantId}/foodMenu")
+	@GetMapping("/{restaurantId}")
 	public List<FoodMenu> restaurantFoodMenus(@PathVariable Long restaurantId) {
 		
 		if(restaurantId == null)
@@ -32,7 +32,7 @@ public class FoodMenuRestController {
 		return foodMenuService.getFoodMenusByRestaurantId(restaurantId);
 	}
 
-	@GetMapping("/restaurant/{foodMenuId}")
+	@GetMapping("/{foodMenuId}")
 	public  FoodMenu foodMenu(@PathVariable Long foodMenuId) {
 		
 		if(foodMenuId == null)
@@ -41,7 +41,7 @@ public class FoodMenuRestController {
 		return foodMenuService.getFoodMenuById(foodMenuId);
 	}
 
-	@PostMapping("/restaurant/foodMenu")
+	@PostMapping("/upload")
 	public Long uploadFoodMenu(@RequestBody @Valid FoodMenu foodMenu) {
 		
 		//save Food Menu after validating the input @Valid
