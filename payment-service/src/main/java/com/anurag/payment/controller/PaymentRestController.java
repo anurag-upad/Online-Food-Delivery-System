@@ -39,7 +39,8 @@ public class PaymentRestController {
 			if(creditCard == null)
 				return new ResponseEntity<String>("Something went wrong, customer not found or doesn't have credit card", 
 						HttpStatus.BAD_REQUEST);
-
+			
+			//Down here we should be calling third party payment gateway like PayPal, but simplifying things here
 			if (isCreditCardValid(creditCard)) {
 
 				LocalDateTime paymentTime = LocalDateTime.now();
@@ -82,5 +83,14 @@ public class PaymentRestController {
 	@GetMapping("/{id}")
 	public Payment findOne(@PathVariable Long id) {
 		return paymentService.getPaymentById(id);
+	}
+	
+	@GetMapping("/{orderId}")
+	public List<Payment> paymentHistoryByOrderId(@PathVariable Long orderId){
+		
+		if(orderId == null)
+			throw new IllegalArgumentException("Restaurant Id is invalid.");
+		
+		return paymentService.getPaymentHistoryByOrderId(orderId);
 	}
 }

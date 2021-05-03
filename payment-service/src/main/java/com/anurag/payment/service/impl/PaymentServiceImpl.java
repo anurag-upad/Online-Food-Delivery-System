@@ -47,4 +47,9 @@ public class PaymentServiceImpl implements PaymentService {
 		return crediCard;
 	}
 
+	@Override
+	public List<Payment> getPaymentHistoryByOrderId(Long orderId) {
+		return paymentRepository.findPaymentHistoryByOrderId(orderId);
+	}
+
 }

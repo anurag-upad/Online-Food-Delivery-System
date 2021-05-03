@@ -38,6 +38,7 @@ public class OrderServiceKafkaImpl implements OrderServiceKafka {
 		//from where it will be consumed by the Restaurant's consumer API 
 		orderKafkaTemplate.send(TOPIC, order);
 		
+		//Send an email to customer with his order details
 		orderStatusUpdateListener.listenOrderStatusMessage(order);
 		
 	}

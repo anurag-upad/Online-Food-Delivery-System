@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: API-GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: lb://Order-Microservice
+          predicates:
+            - Path=/order/**
+            
+        - id: payment-service
+          uri: lb://Payment-Microservice
+          predicates:
+            - Path=/payment/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: payment-service
+                fallbackuri: forward:/failureMakePayment
+                
+        - id: restaurant-service
+          uri: lb://Restaurant-Microservice
+          predicates:
+            - Path=/restaurant/**
+            
+        - id: customer-management-service
+          uri: lb://Customer-Microservice
+          predicates:
+            - Path=/customer/**
+                
+
+server:
+  port: 9000

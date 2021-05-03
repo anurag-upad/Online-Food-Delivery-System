@@ -38,29 +38,21 @@ public class OrderRestController {
 	@Value("${restaurant.microservice.url}")
 	private String restaurantServiceUrl;
 	
-	@Value("${payment.microservice.url}")
-	private String paymentManagmentUrl;
 
-	
 	@PostMapping(value = "/create")
 	public String placeOrder(@Valid @RequestBody Order order) throws MessagingException {
 		
 		//Create the order for the customer after validating the input @Valid
 		orderService.saveOrder(order);
 		
-		//validate customer's payment by calling payment microservice
-		Payment payment = new Payment();
-		payment.setOrderId(order.getId());
-		payment.setTotalPrice(order.getTotalPrice());
-		payment.setCustomerId(order.getUserId());
-		Payment paymentreturn = restTemplate.postForObject(paymentManagmentUrl, payment, Payment.class);
+		//validate customer's payment by calling Payment microservice
+		Payment paymentResponse=orderService.getPaymentResponse(order);
 		
-		if(paymentreturn.getOrderStatus()== OrderStatus.PAID) {
+		if(paymentResponse.getOrderStatus()== OrderStatus.PAID) {
 			order.setOrderStatus(OrderStatus.PAID);
 			
-			//payment is successful
-			//now, publish the message on to the Kafka Topic using KafkaTemplate
-			//from where it will be consumed by the Restaurant Microservice
+			//payment is successful, now send message to restaurant With order information and
+			//payment confirmation through a Kafka topic
 			orderServiceKafka.publishOrder(order);
 		}
 		

@@ -15,5 +15,7 @@ public interface PaymentService {
 	
 	public CreditCard getCrediCardDetails(Long customerId);
 
+	public List<Payment> getPaymentHistoryByOrderId(Long orderId);
+
 
 }
