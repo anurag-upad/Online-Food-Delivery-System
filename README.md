@@ -49,7 +49,7 @@ GET&nbsp; &nbsp; &nbsp; &nbsp; 	       	     http://localhost:9004/payment/{paym
 
 
 **Service Discovery**</br>
-* All 4 microservices register themselves with Eureka Server i.e. Server Discovery in this case and are discoverable and provided whenever any other microservice needs it.</br></br>
+* All 4 microservices register themselves with Eureka Server i.e. Server Discovery in this case and are discoverable and will communicate with each other using service name rather than the hostname and port number</br></br>
 
 You can also use **Swagger UI console** to view/manage/consume the REST endpoints: </br>
 **localhost:900X/swagger-ui.html** where X in the Port number can be 1,2,3,4 based on the services defined above.
