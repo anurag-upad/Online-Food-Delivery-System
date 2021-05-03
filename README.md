@@ -41,6 +41,7 @@ GET&nbsp; &nbsp; &nbsp; &nbsp; 	       http://localhost:9003/address/{id}	 &nbsp
 
 **Payment Service**</br>
 * Validate if customer's credit card information is valid or not. If yes, send the success status response as PAID.</br>
+* Using **Hystrix** as circuit breaker, in case Payment fails for some reason for an order </br>
 * Its REST endpoints are :<br/>
 Method&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Path&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Description</br>
 POST&nbsp; &nbsp; &nbsp; 	         http://localhost:9004/payment/save&nbsp; &nbsp; &nbsp; &nbsp;                        	Update Customer's payment status to Paid</br>
