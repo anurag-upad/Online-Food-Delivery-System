@@ -1,6 +1,13 @@
 # Online Food Delivery System
 **Online food delivery** back end system developed using **Spring Boot, Spring Cloud, REST API, Kafka and PostgreSQL**. There are **4 major microservices** that work together and managed by **Eureka Service Discovery** : </br><br/>
 
+**Service Discovery**</br>
+* All 4 microservices register themselves with Eureka Server acting as a Service Discovery and will communicate with each other using service name rather than the hostname and port number.</br></br>
+
+**API Gateway**</br>
+* Defined an API Gateway which will intercept all the HTTP requests from the client and route them to the appropriate microservice using the request's URL pattern</br>
+* Port of API Gateway defined is 9000. So all the REST endpoints defined below can be accessed using API Gateway's port number. Just replace the port number with 9000.
+
 **Order Service**</br>
 * Order food by choosing different menu items and their quantity.</br>
 * Get valid payment information from Payment Microservice.</br>
@@ -45,12 +52,11 @@ GET&nbsp; &nbsp; &nbsp; &nbsp; 	       http://localhost:9003/address/{id}	 &nbsp
 * Its REST endpoints are :<br/>
 Method&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Path&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Description</br>
 POST&nbsp; &nbsp; &nbsp; 	         http://localhost:9004/payment/save&nbsp; &nbsp; &nbsp; &nbsp;                        	Update Customer's payment status to Paid</br>
-GET&nbsp; &nbsp; &nbsp; &nbsp; 	       	     http://localhost:9004/payment/all &nbsp; &nbsp; &nbsp; &nbsp;         					Get all payments</br>
-GET&nbsp; &nbsp; &nbsp; &nbsp; 	       	     http://localhost:9004/payment/{paymentId} &nbsp; &nbsp; &nbsp; &nbsp; 	 	 			Get payment by payment id</br></br>
+GET&nbsp; &nbsp; &nbsp; &nbsp; 	       	     http://localhost:9004/payment/all &nbsp; &nbsp; &nbsp; &nbsp;         				Get all payments</br>
+GET&nbsp; &nbsp; &nbsp; &nbsp; 	       	     http://localhost:9004/payment/{paymentId} &nbsp; &nbsp; &nbsp; &nbsp; 	 	 		Get payment by payment id</br>
+GET&nbsp; &nbsp; &nbsp; &nbsp; 	       	     http://localhost:9004/payment/{orderId} &nbsp; &nbsp; &nbsp; &nbsp; 	 	 			Get Payment History by order id</br></br>
 
 
-**Service Discovery**</br>
-* All 4 microservices register themselves with Eureka Server i.e. Server Discovery in this case and are discoverable and will communicate with each other using service name rather than the hostname and port number</br></br>
 
-You can also use **Swagger UI console** to view/manage/consume the REST endpoints: </br>
+You can also use **Swagger UI console** to view/manage/consume the individual microservice's REST endpoints: </br>
 **localhost:900X/swagger-ui.html** where X in the Port number can be 1,2,3,4 based on the services defined above.
