@@ -5,7 +5,7 @@
 * Order food by choosing different menu items and their quantity.</br>
 * Get valid payment information from Payment Microservice.</br>
 * Send Email to the customer about any order updates.<br/>
-* Its REST Endpoints :<br/>
+* Its REST endpoints are :<br/>
 Method&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Path&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Description</br>
 POST&nbsp; &nbsp; &nbsp; 	       http://localhost:9001/order/create&nbsp; &nbsp; &nbsp; &nbsp; 	                 		Create a new order</br>
 GET&nbsp; &nbsp; &nbsp; &nbsp; 	       	   http://localhost:9001/order/{restaurantId}&nbsp; &nbsp; &nbsp; &nbsp;                    Get all orders for a restaurant</br>
@@ -16,6 +16,7 @@ GET&nbsp; &nbsp; &nbsp; &nbsp; 	           http://localhost:9001/order/restauran
 **Restaurant Service**</br>
 * Manage all the restaurants and their food menu information such as registering a new restaurant or a food menu and 
 finding a restaurant or their food menus.</br>
+* Its REST endpoints are :<br/>
 Method&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Path&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Description</br>
 POST&nbsp; &nbsp; &nbsp; 	       http://localhost:9002/restaurant/create&nbsp; &nbsp; &nbsp; &nbsp; 	                     Upload new restaurant and its information</br>
 GET&nbsp; &nbsp; &nbsp; &nbsp; 	           http://localhost:9002/restaurant/all&nbsp; &nbsp; &nbsp; &nbsp;                     		 Get all restaurants information</br>
@@ -27,7 +28,7 @@ GET&nbsp; &nbsp; &nbsp; &nbsp; 	           http://localhost:9002/restaurant/{foo
 
 **Customer Management Service**</br>
 * Register customer, save profile details, credit card information and delivery address information.<br/>
-Its REST Endpoints :<br/> 
+* Its REST endpoints are :<br/> 
 Method&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Path&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Description</br>
 POST&nbsp; &nbsp; &nbsp; 	      http://localhost:9003/customer/signup&nbsp; &nbsp; &nbsp; &nbsp;                   Register new customer's profile, address & payment info <br/>
 GET&nbsp; &nbsp; &nbsp; &nbsp; 	       http://localhost:9003/customer/checkCard/{customerId}&nbsp; &nbsp; &nbsp; &nbsp;   Get customer's credit card info<br/>
@@ -40,7 +41,7 @@ GET&nbsp; &nbsp; &nbsp; &nbsp; 	       http://localhost:9003/address/{id}	 &nbsp
 
 **Payment Service**</br>
 * Validate if customer's credit card information is valid or not. If yes, send the success status response as PAID.</br>
-Its REST Endpoints :<br/>
+* Its REST endpoints are :<br/>
 Method&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Path&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Description</br>
 POST&nbsp; &nbsp; &nbsp; 	         http://localhost:9004/payment/save&nbsp; &nbsp; &nbsp; &nbsp;                        	Update Customer's payment status to Paid</br>
 GET&nbsp; &nbsp; &nbsp; &nbsp; 	       	     http://localhost:9004/payment/all &nbsp; &nbsp; &nbsp; &nbsp;         					Get all payments</br>
