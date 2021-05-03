@@ -1,5 +1,5 @@
 # Online Food Delivery System
-Online food delivery back end system developed using Spring Boot, Spring Cloud, REST API, Kafka and PostgreSQL. There are 4 major microservices that work together and managed by Eureka Service Discovery : </br>
+**Online food delivery** back end system developed using **Spring Boot, Spring Cloud, REST API, Kafka and PostgreSQL**. There are 4 major microservices that work together and managed by **Eureka Service Discovery** : </br>
 
 **Order Service**</br>
 * Order food by choosing different menu items and their quantity.</br>
