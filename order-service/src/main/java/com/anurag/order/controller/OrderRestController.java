@@ -48,7 +48,7 @@ public class OrderRestController {
 		//Create the order for the customer after validating the input @Valid
 		orderService.saveOrder(order);
 		
-		//check the validation of the payment by calling payment microservice send order information
+		//validate customer's payment by calling payment microservice
 		Payment payment = new Payment();
 		payment.setOrderId(order.getId());
 		payment.setTotalPrice(order.getTotalPrice());
@@ -58,7 +58,8 @@ public class OrderRestController {
 		if(paymentreturn.getOrderStatus()== OrderStatus.PAID) {
 			order.setOrderStatus(OrderStatus.PAID);
 			
-			//publish the message on to the Kafka Topic using KafkaTemplate
+			//payment is successful
+			//now, publish the message on to the Kafka Topic using KafkaTemplate
 			//from where it will be consumed by the Restaurant Microservice
 			orderServiceKafka.publishOrder(order);
 		}

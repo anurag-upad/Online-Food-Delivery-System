@@ -1,6 +1,7 @@
 package com.anurag.order.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,7 +40,7 @@ public class FoodItem implements Serializable {
 	private String foodName;
 
 	@NotNull( message = "{Min.number.foodPrice}")
-	private double foodPrice;
+	private BigDecimal foodPrice;
 
 	@NotNull
 	@Min(value = 1, message = "{Min.number.quantity}")

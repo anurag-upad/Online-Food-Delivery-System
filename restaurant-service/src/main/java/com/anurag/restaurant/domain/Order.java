@@ -1,5 +1,6 @@
 package com.anurag.restaurant.domain;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Order {
 	private String restaurantName;
 	private LocalDateTime orderTime = LocalDateTime.now();
 	private OrderStatus orderStatus = OrderStatus.CREATED;
-	private double totalPrice;
+	private BigDecimal totalPrice;
 	private List<FoodItem> foodItem;
 
 }

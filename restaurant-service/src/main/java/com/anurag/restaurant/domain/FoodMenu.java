@@ -1,6 +1,7 @@
 package com.anurag.restaurant.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +45,7 @@ public class FoodMenu implements Serializable{
 	private String foodCatalog;
 	
 	@NotNull(message = "{Size.foodPrice}")
-	private double foodPrice;
+	private BigDecimal foodPrice;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Restaurant restaurant;

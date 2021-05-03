@@ -1,5 +1,6 @@
 package com.anurag.order.domain;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import lombok.Getter;
@@ -15,7 +16,7 @@ public class Payment {
 	private long orderId;
 	private long customerId;
 	private LocalDateTime paymentTime = LocalDateTime.now();
-	private double totalPrice;
+	private BigDecimal totalPrice;
 	private OrderStatus orderStatus;
 
 }

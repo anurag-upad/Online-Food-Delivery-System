@@ -1,6 +1,7 @@
 package com.anurag.order.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -52,9 +53,10 @@ public class Order implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private OrderStatus orderStatus = OrderStatus.CREATED;
+	
 	@NotNull
 	@Min(value = 1, message = "{Min.number.totalPrice}")
-	private double totalPrice;
+	private BigDecimal totalPrice;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_id")

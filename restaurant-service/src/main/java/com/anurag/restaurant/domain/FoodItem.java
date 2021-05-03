@@ -1,5 +1,7 @@
 package com.anurag.restaurant.domain;
 
+import java.math.BigDecimal;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +14,7 @@ public class FoodItem {
 	private Long id;
 	private Long foodMenuId;
 	private String foodName;
-	private double foodPrice;
+	private BigDecimal foodPrice;
 	private int quantity;
 
 }
