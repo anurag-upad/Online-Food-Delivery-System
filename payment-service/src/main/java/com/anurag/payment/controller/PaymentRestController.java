@@ -41,7 +41,7 @@ public class PaymentRestController {
 						HttpStatus.BAD_REQUEST);
 			
 			//Down here we should be calling third party payment gateway like PayPal, but simplifying things here
-			if (isCreditCardValid(creditCard)) {
+			if (paymentService.isCreditCardValid(creditCard)) {
 
 				LocalDateTime paymentTime = LocalDateTime.now();
 				payment.setPaymentTime(paymentTime);
@@ -59,20 +59,6 @@ public class PaymentRestController {
 
 	public ResponseEntity<?> failureMakePayment() {
 		return new ResponseEntity<String>("Customer service is temporarily unavailable", HttpStatus.BAD_REQUEST);
-	}
-
-	public boolean isCreditCardValid(CreditCard creditCard) {
-		LocalDate today = LocalDate.now();
-		int expMonth = Integer.parseInt(creditCard.getExpiryMonth());
-		int expYear = Integer.parseInt(creditCard.getExpiryYear());
-		int todayMonth = today.getMonthValue();
-		int todayYear = today.getYear();
-
-		if (expYear >= todayYear && expMonth >= todayMonth) {
-			return true;
-		}
-
-		return false;
 	}
 
 	@GetMapping("/all")

@@ -1,5 +1,6 @@
 package com.anurag.payment.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,21 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public Payment getPaymentById(Long id) {
 		return paymentRepository.findById(id).get();
+	}
+	
+	@Override
+	public boolean isCreditCardValid(CreditCard creditCard) {
+		LocalDate today = LocalDate.now();
+		int expMonth = Integer.parseInt(creditCard.getExpiryMonth());
+		int expYear = Integer.parseInt(creditCard.getExpiryYear());
+		int todayMonth = today.getMonthValue();
+		int todayYear = today.getYear();
+
+		if (expYear >= todayYear && expMonth >= todayMonth) {
+			return true;
+		}
+
+		return false;
 	}
 
 	@Override

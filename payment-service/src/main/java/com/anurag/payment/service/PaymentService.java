@@ -13,6 +13,8 @@ public interface PaymentService {
 	
 	public Payment getPaymentById(Long id);
 	
+	public boolean isCreditCardValid(CreditCard creditCard);
+	
 	public CreditCard getCrediCardDetails(Long customerId);
 
 	public List<Payment> getPaymentHistoryByOrderId(Long orderId);
