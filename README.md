@@ -6,7 +6,7 @@
 
 **API Gateway**</br>
 * Defined an API Gateway which will intercept all the HTTP requests from the client and route them to the appropriate microservice using the request's URL pattern</br>
-* Port of API Gateway defined is 9000. So all the REST endpoints defined below can be accessed using API Gateway's port number. Just replace the port number with 9000.
+* Port of API Gateway defined is 9000. So all the REST endpoints defined below can be accessed using 9000 portal number as well.</br></br>
 
 **Order Service**</br>
 * Order food by choosing different menu items and their quantity.</br>
